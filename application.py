@@ -1,9 +1,13 @@
 from flask import Flask, request, render_template, jsonify
 
+
+
 datos = [{}]
 
+
+
+
 application = Flask(__name__)
-app = application
 
 @application.route("/")
 def template():
@@ -11,14 +15,26 @@ def template():
 
 @application.route("/form", methods = ["POST"])
 def form():
+        import datetime as dt
+        from datetime import date
+        import pytz
+
+        register = dt.datetime.now(pytz.timezone("America/Costa_Rica"))
+        
         name = request.form["name"]
         email = request.form["email"]
         alert = request.form["alert"]
         details = request.form["details"]
-        val = 0
-        id = val + 1
+        
 
         
+
+        fech = date.today()
+        cu_hour = register.hour
+        cu_min = register.minute
+
+        time = str(cu_hour) + ":" + str(cu_min)
+
         global datos
         datos = [
     {
@@ -34,11 +50,17 @@ def form():
         "details": details
     },
     {
-        "id": id
+        "date": str(fech)
+    },
+    {
+        "time": str(time)
     }
                 ]
-
-        return render_template("form_final.html"), val+1
+    
+        
+        
+        return render_template("form.html")
+        
 
 
 @application.route("/json/bridge")
@@ -48,4 +70,4 @@ def json():
 
 
 if __name__=='__main__':
-    application.run(debug=False)
+    application.run(debug=False) 
