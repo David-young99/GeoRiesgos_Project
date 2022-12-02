@@ -15,7 +15,10 @@ def form():
         email = request.form["email"]
         alert = request.form["alert"]
         details = request.form["details"]
-        id = 0
+        val = 0
+        id = val + 1
+
+        
         global datos
         datos = [
     {
@@ -31,11 +34,11 @@ def form():
         "details": details
     },
     {
-        "id": id + 1
+        "id": id
     }
                 ]
 
-        return render_template("form_final.html")
+        return render_template("form_final.html"), val+1
 
 
 @application.route("/json/bridge")
