@@ -1,17 +1,14 @@
 from flask import Flask, request, render_template, jsonify
 
-
-
 datos = [{}]
-
-
-
 
 application = Flask(__name__)
 
 @application.route("/")
 def template():
     return render_template("form.html")
+
+
 
 @application.route("/form", methods = ["POST"])
 def form():
@@ -25,15 +22,7 @@ def form():
         email = request.form["email"]
         alert = request.form["alert"]
         details = request.form["details"]
-        
 
-        
-
-        fech = date.today()
-        cu_hour = register.hour
-        cu_min = register.minute
-
-        time = str(cu_hour) + ":" + str(cu_min)
 
         global datos
         datos = [
@@ -50,10 +39,7 @@ def form():
         "details": details
     },
     {
-        "date": str(fech)
-    },
-    {
-        "time": str(time)
+        "id" : 0
     }
                 ]
     
