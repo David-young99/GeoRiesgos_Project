@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, jsonify
 datos = [{}]
 
 application = Flask(__name__)
+app = application
 
 @application.route("/")
 def template():
