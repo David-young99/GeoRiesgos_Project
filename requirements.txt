@@ -2,3 +2,4 @@ Flask
 Streamlit
 pygeos
 Streamlit-folium
+virtualenv
