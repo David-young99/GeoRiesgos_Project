@@ -15,7 +15,7 @@ def form():
         email = request.form["email"]
         alert = request.form["alert"]
         details = request.form["details"]
-
+        id = 0
         global datos
         datos = [
     {
@@ -29,6 +29,9 @@ def form():
     },
     {
         "details": details
+    },
+    {
+        "id": id + 1
     }
                 ]
 
