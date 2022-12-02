@@ -2,13 +2,13 @@ from flask import Flask, request, render_template, jsonify
 
 datos = [{}]
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route("/")
+@application.route("/")
 def template():
     return render_template("form.html")
 
-@app.route("/form", methods = ["POST"])
+@application.route("/form", methods = ["POST"])
 def form():
         name = request.form["name"]
         email = request.form["email"]
@@ -34,11 +34,9 @@ def form():
         return render_template("form_final.html")
 
 
-@app.route("/json/bridge")
+@application.route("/json/bridge")
 def json():
     
    return jsonify(datos)
 
 
-if __name__=='__main__':
-    app.run(debug=False, port=5000)
