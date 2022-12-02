@@ -40,5 +40,5 @@ def json():
    return jsonify(datos)
 
 
-if __name__=='__main__':
-    app.run(debug=False, port=5000)
+#if __name__=='__main__':
+ #   app.run(debug=False, port=5000)
