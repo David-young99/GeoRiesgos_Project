@@ -51,7 +51,8 @@ def form():
     },
     {
         "date" : today
-    },{
+    },
+    {
         "time" : time
     }
                 ]
@@ -70,8 +71,10 @@ def json():
 def status():
 
     status = [{
-        "date" : today,
-        "time": str(time)
+        "date" :  date
+    },
+    {
+        "time" : time
     }]
 
     return jsonify(status)
