@@ -58,15 +58,12 @@ def form():
                 ]
     
         
-        
+        json()
+        status()
+
         return render_template("form.html")
-        
-
-@application.route("/json/bridge")
-def json():
     
-   return jsonify(datos)
-
+        
 @application.route("/json/status")
 def status():
 
@@ -78,6 +75,13 @@ def status():
     }]
 
     return jsonify(status)
+
+    
+
+@application.route("/json/bridge")
+def json():
+    
+   return jsonify(datos)
 
 if __name__=='__main__':
     application.run(debug=False) 
