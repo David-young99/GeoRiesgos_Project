@@ -71,7 +71,7 @@ def json():
 def status():
 
     status = [{
-        "date" :  date
+        "date" :  today
     },
     {
         "time" : time
