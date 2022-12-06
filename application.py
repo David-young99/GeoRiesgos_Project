@@ -2,19 +2,11 @@ from flask import Flask, request, render_template, jsonify
 import datetime, pytz
 from datetime import date
 
-datos = [{}]
-now = datetime.datetime.now(pytz.timezone("America/Costa_Rica"))
-
-today = date.today().strftime("%d/%m/%Y")
-h = now.hour
-m = now.minute
-time = str(h) + ":" + str(m) + ":"
-
 
 application = Flask(__name__)
 
 @application.route("/")
-def template():
+def template1():
     return render_template("form.html")
 
 
@@ -23,7 +15,8 @@ def form():
         import datetime as dt
         import pytz
 
-        register = dt.datetime.now(pytz.timezone("America/Costa_Rica"))
+        global datos, today, time
+        now = dt.datetime.now(pytz.timezone("America/Costa_Rica"))
         today = date.today().strftime("%d/%m/%Y")
         h = now.hour
         m = now.minute
@@ -35,7 +28,7 @@ def form():
         details = request.form["details"]
 
 
-        global datos
+        
         datos = [
     {
         "name": name
@@ -56,13 +49,15 @@ def form():
         "time" : time
     }
                 ]
-
-        json()
-        status()
-    
+       
         return render_template("form.html")
+
+@application.route("/json/bridge")
+def json():
     
-        
+   return jsonify(datos)
+
+    
 @application.route("/json/status")
 def status():
 
@@ -73,14 +68,8 @@ def status():
         "time" : time
     }]
 
-    return jsonify(status)
+    return jsonify(status) 
 
-    
-
-@application.route("/json/bridge")
-def json():
-    
-   return jsonify(datos)
 
 if __name__=='__main__':
-    application.run(debug=False) 
+    application.run(debug=False, port=5000) 
