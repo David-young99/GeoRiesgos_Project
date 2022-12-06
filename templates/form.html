@@ -172,7 +172,7 @@ h3 {
     <div id="registration-form">
         <div class='fieldset'>
           <legend>Formulario para generar alertas: #TropiSAT</legend>
-          <form action="/form" method="post" data-validate="parsley">
+          <form action="{{ url_for('form') }}" method="post" data-validate="parsley">
             <div class='row'>
               <label for='name'>Nombre del emisor de la alerta</label>
               <input type="text" placeholder="Nombre y apellidos" name='name' id='firstname' data-required="true" data-error-message="Se requiere el nombre del emisor de la alerta">

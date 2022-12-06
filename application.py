@@ -56,11 +56,10 @@ def form():
         "time" : time
     }
                 ]
-    
-        
+
         json()
         status()
-
+    
         return render_template("form.html")
     
         
